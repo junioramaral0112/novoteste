@@ -1,0 +1,14 @@
+# Configuração automática para publicar no Render.com (plano gratuito).
+# Ao conectar este repositório no Render como "Blueprint", ele já lê estas opções.
+services:
+  - type: web
+    name: sstsolut
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build && npm run setup
+    startCommand: npm run start:cloud
+    envVars:
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: NODE_VERSION
+        value: "22"
